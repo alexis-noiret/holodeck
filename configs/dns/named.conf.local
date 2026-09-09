@@ -1,0 +1,13 @@
+//Zone directe
+zone "starfleet.lan" {
+	type master;
+	file "/etc/bind/db.starfleet.lan";
+};
+
+// Zone inverse (10.0.0.x)
+zone "0.0.10.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.10.0.0";
+};
+
+

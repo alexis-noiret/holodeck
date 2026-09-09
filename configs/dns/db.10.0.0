@@ -1,0 +1,6 @@
+$TTL    604800
+@       IN      SOA     srv.starfleet.lan. admin.starfleet.lan. (
+                        2 604800 86400 2419200 604800 )
+;
+@       IN      NS      srv.starfleet.lan.
+1       IN      PTR     srv.starfleet.lan.

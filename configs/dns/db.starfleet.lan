@@ -1,0 +1,15 @@
+$TTL    604800
+@       IN      SOA     srv.starfleet.lan. admin.starfleet.lan. (
+                        2         ; Serial
+                        604800    ; Refresh
+                        86400     ; Retry
+                        2419200   ; Expire
+                        604800 )  ; Negative Cache TTL
+;
+@       IN      NS      srv.starfleet.lan.
+srv     IN      A       10.0.0.1
+www7    IN      A       10.0.0.1
+www8    IN      A       10.0.0.1
+php     IN      A       10.0.0.1
+admin   IN      A       10.0.0.1
+vscore  IN      A       10.0.0.1

@@ -1,0 +1,14 @@
+#the loopback network interfaces
+auto lo
+iface lo inet loopback
+
+#WAN-NAT  acces internet DHCP
+allow-hotplug ens33
+iface ens33 inet dhcp
+
+#LAN starfleet.lan IP fixe
+auto ens34
+iface ens34 inet static
+	address 10.0.0.1
+	netmask 255.255.255.0
+

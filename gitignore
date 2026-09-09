@@ -1,0 +1,40 @@
+# =========================================================
+#  Secrets — NE JAMAIS COMMITER SUR UN DEPOT PUBLIC
+# =========================================================
+
+# Cles privees SSL / TLS
+*.key
+*.pem
+
+# Fichiers annexes de la PKI
+*.srl
+*.csr
+
+# Certificats prives explicites
+starfleet-CA.key
+starfleet.lan.key
+
+# Dumps LDAP (contiennent les hash de mots de passe)
+configs/ldap/*.ldif
+*.ldif
+
+# Dossier de secrets eventuel
+secrets/
+
+# =========================================================
+#  Sauvegardes
+# =========================================================
+*.tar.gz
+*.tgz
+/var/backups/
+
+# =========================================================
+#  Fichiers systeme / editeurs
+# =========================================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
