@@ -29,6 +29,8 @@ VMware jusqu'aux services. Toutes les commandes serveur sont exécutées en
 - Tasksel serveur : décocher l'environnement de bureau **et** « serveur web » (Apache), ne garder que **SSH** + **utilitaires usuels**.
 - Tasksel client : cocher **Xfce** + SSH.
 
+![Conformité : aucun compte sudo](images/no-sudo.png)
+
 ---
 
 ## 2. Configuration réseau du serveur
@@ -71,6 +73,8 @@ echo "nameserver 127.0.0.1" > /etc/resolv.conf
 chattr +i /etc/resolv.conf     # empeche l'ecrasement au reboot
 ```
 
+![Interfaces réseau du serveur](images/reseau-interfaces.png)
+
 ---
 
 ## 3. DNS (bind9)
@@ -96,6 +100,8 @@ systemctl restart named
 
 Tester : `dig @10.0.0.1 www8.starfleet.lan +short` doit renvoyer `10.0.0.1`.
 
+![Résolution DNS directe et inverse](images/dns.png)
+
 ---
 
 ## 4. DHCP (isc-dhcp-server)
@@ -111,6 +117,8 @@ apt install -y isc-dhcp-server
 systemctl restart isc-dhcp-server
 ```
 
+![Le client reçoit son bail DHCP automatiquement](images/dhcp-client.png)
+
 ---
 
 ## 5. Pare-feu (nftables)
@@ -124,6 +132,8 @@ systemctl enable --now nftables
 
 > Toujours garder une console VMware ouverte lors du passage en `policy drop`,
 > et s'assurer que la règle SSH (port 22) est présente avant de recharger.
+
+![Règles nftables — politique drop + NAT](images/pare-feu.png)
 
 ---
 
@@ -156,6 +166,12 @@ chmod 600 /etc/ssl/starfleet/*.key
 > Importer `starfleet-CA.crt` dans Firefox du client (onglet *Autorités*) pour
 > obtenir le cadenas sans avertissement.
 
+![Certificat wildcard avec SAN](images/pki-san.png)
+
+![Import de la CA dans Firefox](images/import-ca.png)
+
+![HTTPS avec cadenas propre](images/https-cadenas.png)
+
 ---
 
 ## 7. Base de données (MariaDB)
@@ -181,6 +197,10 @@ apt install -y \
 ```
 
 Deux sockets doivent exister : `ls -l /run/php/`
+
+![www8 en PHP 8.4](images/www8-php84.png)
+
+![www7 en PHP 7.4](images/www7-php74.png)
 
 ---
 
@@ -208,6 +228,8 @@ Déployer la dernière version depuis phpmyadmin.net dans `/var/www/phpmyadmin`,
 générer le `blowfish_secret`, créer le dossier `tmp`, puis le vhost
 `php.starfleet.lan`.
 
+![phpMyAdmin connecté](images/phpmyadmin.png)
+
 ---
 
 ## 11. FTP (vsftpd)
@@ -223,6 +245,10 @@ echo "ftpweb" > /etc/vsftpd.userlist
 Config `/etc/vsftpd.conf` : chroot, TLS obligatoire (certif partagé),
 mode passif `40000-40100`. Ouvrir les ports FTP dans nftables.
 
+![FTPS — certificat TLS partagé (même certif que le web)](images/ftp-filezilla-arbo.png)
+
+![FTPS — utilisateur chrooté sur /var/www](images/ftp-arborescence.png)
+
 ---
 
 ## 12. Annuaire LDAP (OpenLDAP)
@@ -234,6 +260,8 @@ dpkg-reconfigure slapd      # domaine : starfleet.lan
 
 Créer l'OU `people` et les utilisateurs via des fichiers LDIF (`ldapadd`).
 Chaque entrée LDIF doit être séparée par une **ligne vide**.
+
+![Les utilisateurs de l'annuaire LDAP](images/ldap-users.png)
 
 ---
 
@@ -247,6 +275,8 @@ wget https://raw.githubusercontent.com/nginxinc/nginx-ldap-auth/master/nginx-lda
 
 Créer le service systemd `nginx-ldap-auth` (écoute sur `127.0.0.1:8888`),
 puis protéger une zone (`/prive/`) avec `auth_request` dans le vhost www8.
+
+![Zone web protégée par LDAP](images/ldap-zone-protegee.png)
 
 ---
 
@@ -263,6 +293,10 @@ systemctl enable --now code-server@alexis
 
 Les deux sont exposés via des vhosts Nginx en reverse proxy (WebSocket activé).
 
+![Cockpit — administration système](images/cockpit.png)
+
+![code-server — VS Code dans le navigateur](images/vscore.png)
+
 ---
 
 ## 15. Sauvegarde automatisée
@@ -273,3 +307,7 @@ et planifier via cron :
 ```
 0 2 * * * /opt/backup/backup-config.sh >> /var/log/backup-starfleet.log 2>&1
 ```
+
+![Script de sauvegarde en action](images/sauvegarde-script.png)
+
+![Tâche cron planifiée](images/sauvegarde-cron.png)

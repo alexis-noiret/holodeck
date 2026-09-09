@@ -35,6 +35,12 @@ l'accès Internet, une patte LAN pour le réseau interne. Il assure le routage
 et le NAT entre les deux, si bien que le client — qui n'a qu'une patte LAN —
 accède à Internet **uniquement à travers le serveur**.
 
+![Configuration VMware du serveur — LAN Segment isolé](images/vmware-serveur.png)
+
+![Configuration VMware du client — même LAN Segment](images/vmware-client.png)
+
+![Interfaces réseau du serveur (WAN ens33 / LAN ens34)](images/reseau-interfaces.png)
+
 ---
 
 ## Choix de virtualisation
@@ -64,6 +70,8 @@ Conformité vérifiable :
 getent group sudo      # aucun membre listé
 dpkg -l sudo           # paquet absent
 ```
+
+![Conformité : aucun compte sudo](images/no-sudo.png)
 
 ### Dépôts upstream plutôt que Debian
 
@@ -97,6 +105,8 @@ Nginx aiguille ensuite chaque site vers le bon socket selon le nom d'hôte :
 Les deux versions ne se rencontrent jamais : c'est Nginx qui décide, requête
 par requête, quel interpréteur utiliser.
 
+![Cohabitation PHP 7.4 et 8.4 côte à côte](images/cohabitation-php.png)
+
 ---
 
 ## Le reverse proxy Nginx
@@ -128,6 +138,10 @@ L'usage des **SAN** (Subject Alternative Names) est indispensable : les
 navigateurs modernes ignorent le champ CN et exigent les SAN pour valider un
 certificat.
 
+![Certificat wildcard avec SAN](images/pki-san.png)
+
+![Import de la CA dans Firefox](images/import-ca.png)
+
 ---
 
 ## L'authentification LDAP côté web
@@ -147,6 +161,8 @@ répond `200` (autorisé) ou `401` (refusé). C'est le pattern moderne de
 **délégation d'authentification**, que l'on retrouve dans des solutions comme
 Authelia ou oauth2-proxy.
 
+![Zone web protégée par authentification LDAP](images/ldap-zone-protegee.png)
+
 ---
 
 ## Synthèse des flux réseau autorisés (pare-feu)
@@ -165,3 +181,5 @@ ouverts :
 
 Le NAT (masquerade) est appliqué en sortie sur l'interface WAN, et le
 forwarding LAN → WAN est autorisé pour donner Internet au client.
+
+![Règles nftables — politique drop + NAT](images/pare-feu.png)

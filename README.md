@@ -71,6 +71,8 @@ Toutes les interfaces répondent en **HTTPS**. Un vhost « catch-all » ferme la
 connexion (`return 444`) pour tout nom d'hôte non déclaré et pour les accès
 par IP directe.
 
+![Cohabitation PHP 7.4 et 8.4](docs/images/cohabitation-php.png)
+
 ---
 
 ## 🔒 Sécurité
@@ -83,6 +85,8 @@ par IP directe.
 - **FTP en TLS obligatoire**, utilisateur chrooté et sans shell de connexion (`nologin`)
 - **Authentification LDAP** pour les zones web protégées (pattern `auth_request`)
 - **Sauvegarde automatisée** de la configuration (tâche cron quotidienne + rotation)
+
+![HTTPS avec certificat local](docs/images/https-cadenas.png)
 
 ---
 
