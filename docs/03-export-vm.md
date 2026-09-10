@@ -27,14 +27,14 @@ les archiver ou les transmettre (format **OVF/OVA**, portable et standard).
 
 ---
 
-## Export au format OVF/OVA (VMware Workstation)
+## Export au format OVA (VMware Workstation)
 
 ### Méthode graphique
 
 1. Sélectionner la VM dans la bibliothèque VMware.
 2. Menu **File → Export to OVF…**
-3. Choisir l'emplacement et le nom du fichier (ex. `srv-starfleet.ova`).
-4. Répéter l'opération pour la VM cliente (`cli-starfleet.ova`).
+3. Choisir l'emplacement et le nom du fichier.
+4. Répéter l'opération pour la VM cliente.
 
 Le format **OVA** produit un fichier unique (archive) contenant la définition
 de la VM et son disque — pratique à transmettre. Le format **OVF** produit
@@ -42,12 +42,17 @@ plusieurs fichiers (`.ovf`, `.vmdk`, `.mf`).
 
 ### Méthode en ligne de commande (ovftool)
 
-VMware fournit l'utilitaire `ovftool` :
+VMware fournit l'utilitaire `ovftool`, qui permet de produire directement un
+fichier `.ova` unique :
 
 ```bash
 ovftool "/chemin/vers/Debian server.vmx" srv-starfleet.ova
 ovftool "/chemin/vers/Debian client.vmx" cli-starfleet.ova
 ```
+
+Chaque export se termine par `Completed successfully`.
+
+![Les deux VM exportées au format OVA](images/export-vm.png)
 
 ---
 
@@ -90,7 +95,8 @@ répond correctement.
 
 ## Bonnes pratiques
 
-- **Compresser** les fichiers OVA volumineux avant transfert si besoin.
+- Les fichiers OVA sont volumineux (plusieurs Go) : les transmettre via un
+  espace de partage adapté, pas dans le dépôt Git.
 - **Conserver la CA** (`starfleet-CA.crt`) séparément pour pouvoir la
   réimporter dans le navigateur après restauration.
 - Ne **jamais** inclure de secrets (clés privées, mots de passe) dans une
