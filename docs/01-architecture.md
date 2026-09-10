@@ -81,31 +81,31 @@ dépôts officiels amont :
 
 | Logiciel | Dépôt | Raison |
 |----------|-------|--------|
-| PHP 7.4 + 8.4 | `packages.sury.org` | Seul dépôt permettant la **cohabitation** de plusieurs versions de PHP |
+| PHP 7.4 + 8.6 | `packages.sury.org` | Seul dépôt permettant la **cohabitation** de plusieurs versions de PHP |
 | MariaDB 12.3 | `mariadb.org` | Dernière version stable |
 | Nginx 1.31 | `nginx.org` (mainline) | Dernière version |
 
 ---
 
-## La cohabitation PHP 7.4 / 8.4
+## La cohabitation PHP 7.4 / 8.6
 
 C'est le point central du projet. Chaque version de PHP tourne comme un
 **service php-fpm indépendant**, avec son propre socket Unix :
 
 ```
 /run/php/php7.4-fpm.sock
-/run/php/php8.4-fpm.sock
+/run/php/php8.6-fpm.sock
 ```
 
 Nginx aiguille ensuite chaque site vers le bon socket selon le nom d'hôte :
 
 - `www7.starfleet.lan` → `php7.4-fpm.sock`
-- `www8.starfleet.lan` → `php8.4-fpm.sock`
+- `www8.starfleet.lan` → `php8.6-fpm.sock`
 
 Les deux versions ne se rencontrent jamais : c'est Nginx qui décide, requête
 par requête, quel interpréteur utiliser.
 
-![Cohabitation PHP 7.4 et 8.4 côte à côte](images/cohabitation-php.png)
+![Cohabitation PHP 7.4 et 8.6 côte à côte](images/cohabitation-php.png)
 
 ---
 

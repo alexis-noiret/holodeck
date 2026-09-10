@@ -43,7 +43,7 @@ interface WAN. Le client n'a aucun accès direct : tout passe par le serveur.
 | **isc-dhcp-server** | 4.4.3 | DHCP : plage `10.0.0.100-200` |
 | **nftables** | — | Pare-feu (politique `drop` par défaut) + NAT |
 | **Nginx** | 1.31.5 (mainline) | Serveur web / reverse proxy HTTPS |
-| **PHP** | 7.4.33 + 8.4.25 | Cohabitation via php-fpm (sockets séparés) |
+| **PHP** | 7.4.33 + 8.6.0alpha1 | Cohabitation via php-fpm (sockets séparés) |
 | **MariaDB** | 12.3.3 | Base de données |
 | **phpMyAdmin** | 5.2.3 | Gestion de la base de données |
 | **vsftpd** | 3.0.5 | FTP chrooté en TLS |
@@ -62,7 +62,7 @@ interface WAN. Le client n'a aucun accès direct : tout passe par le serveur.
 | URL | Contenu |
 |-----|---------|
 | `www7.starfleet.lan` | Site de démonstration en PHP 7.4 |
-| `www8.starfleet.lan` | Site de démonstration en PHP 8.4 (+ zone protégée LDAP `/prive/`) |
+| `www8.starfleet.lan` | Site de démonstration en PHP 8.6 (+ zone protégée LDAP `/prive/`) |
 | `php.starfleet.lan` | phpMyAdmin |
 | `admin.starfleet.lan` | Cockpit (administration de la VM) |
 | `vscore.starfleet.lan` | code-server (VS Code Server) |
@@ -71,7 +71,7 @@ Toutes les interfaces répondent en **HTTPS**. Un vhost « catch-all » ferme la
 connexion (`return 444`) pour tout nom d'hôte non déclaré et pour les accès
 par IP directe.
 
-![Cohabitation PHP 7.4 et 8.4](docs/images/cohabitation-php.png)
+![Cohabitation PHP 7.4 et 8.6](docs/images/cohabitation-php.png)
 
 ---
 

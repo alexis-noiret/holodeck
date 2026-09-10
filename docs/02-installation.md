@@ -184,7 +184,7 @@ mariadb-secure-installation
 
 ---
 
-## 8. PHP 7.4 + 8.4 (dépôt Sury)
+## 8. PHP 7.4 + 8.6 (dépôt Sury)
 
 ```bash
 curl -sSL https://packages.sury.org/php/apt.gpg -o /etc/apt/trusted.gpg.d/sury-php.gpg
@@ -193,12 +193,12 @@ apt update
 
 apt install -y \
   php7.4-fpm php7.4-cli php7.4-mysql php7.4-mbstring php7.4-xml php7.4-curl php7.4-gd php7.4-zip \
-  php8.4-fpm php8.4-cli php8.4-mysql php8.4-mbstring php8.4-xml php8.4-curl php8.4-gd php8.4-zip
+  php8.6-fpm php8.6-cli php8.6-mysql php8.6-mbstring php8.6-xml php8.6-curl php8.6-gd php8.6-zip
 ```
 
 Deux sockets doivent exister : `ls -l /run/php/`
 
-![www8 en PHP 8.4](images/www8-php84.png)
+![www8 en PHP 8.6](images/www8-php84.png)
 
 ![www7 en PHP 7.4](images/www7-php74.png)
 
