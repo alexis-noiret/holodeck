@@ -121,6 +121,7 @@ Le projet met en œuvre **quatre** systèmes d'authentification distincts :
 - [Notice d'installation](docs/02-installation.md)
 - [Procédure d'export des VM](docs/03-export-vm.md)
 - [Notice d'utilisation](docs/04-utilisation.md)
+- [Présentation de soutenance (PDF)](presentation/Holodeck-presentation.pdf)
 
 ---
 
