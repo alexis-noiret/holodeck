@@ -1,7 +1,7 @@
 # 🖖 Holodeck — Infrastructure Serveur Starfleet
 
-Projet d'infrastructure système et réseau réalisé dans le cadre du
-**Bachelor IT Cybersécurité** (La Plateforme).
+> Projet d'infrastructure système et réseau réalisé dans le cadre du
+> **Bachelor IT Cybersécurité** (La Plateforme).
 
 Déploiement d'une infrastructure Debian complète virtualisée sous VMware,
 hébergeant l'ensemble des services web et réseau pour les ingénieurs de
@@ -9,7 +9,7 @@ l'USS Enterprise-D.
 
 ---
 
-## 🎯 Objectif
+## 🎯 Objectifs
 
 Mettre en place deux machines virtuelles Debian :
 
@@ -100,6 +100,19 @@ Le projet met en œuvre **quatre** systèmes d'authentification distincts :
 | Utilisateurs LDAP (`picard`, `riker`, `data`, `laforge`, `worf`) | Zones web protégées |
 | Compte MariaDB (`root`) | phpMyAdmin |
 | Compte FTP (`ftpweb`) | Serveur FTP uniquement |
+
+---
+
+## 🧠 Compétences démontrées
+
+- **Administration Linux** : infrastructure Debian 13 serveur (sans interface graphique) et client, virtualisée sous VMware.
+- **Services réseau** : DNS (bind9, zones directe et inverse), DHCP (isc-dhcp-server), routage et NAT.
+- **Pare-feu** : nftables en politique `drop` par défaut.
+- **Web et bases de données** : Nginx en reverse proxy HTTPS, PHP 7.4 et 8.6 côte à côte (php-fpm), MariaDB, phpMyAdmin.
+- **PKI et chiffrement** : autorité de certification locale, certificat wildcard, FTP chrooté en TLS (vsftpd).
+- **Authentification** : OpenLDAP et protection de zones web (`auth_request`).
+- **Exploitation** : Cockpit, code-server, sauvegarde automatisée par cron avec rotation.
+- **Documentation** : architecture, installation, export des VM, notice d'utilisation, soutenance.
 
 ---
 
