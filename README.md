@@ -1,5 +1,11 @@
 # 🖖 Holodeck — Infrastructure Serveur Starfleet
 
+![Debian](https://img.shields.io/badge/OS-Debian-A81D33)
+![VMware](https://img.shields.io/badge/Hyperviseur-VMware-607078)
+![Domain](https://img.shields.io/badge/Domain-Syst%C3%A8me%20%26%20R%C3%A9seau-blue)
+![Project](https://img.shields.io/badge/Project-Bachelor%20IT-orange)
+![Cybersecurity](https://img.shields.io/badge/Focus-Cybersecurity-red)
+
 > Projet d'infrastructure système et réseau réalisé dans le cadre du
 > **Bachelor IT Cybersécurité** (La Plateforme).
 
